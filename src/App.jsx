@@ -49,25 +49,17 @@ const Navbar = () => {
     window.open(gmailUrl, '_blank');
   };
 
-  // Function to scroll to the very top smoothly
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-black border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between text-white">
-        
-        {/* LOGO & NAME (Clickable) */}
-        <div 
-          onClick={scrollToTop}
-          className="flex items-center gap-3 cursor-pointer group"
-        >
+        <div onClick={scrollToTop} className="flex items-center gap-3 cursor-pointer group">
+          {/* FIX: Use BASE_URL */}
           <img 
-            src="JJJ.png" 
+            src={`${import.meta.env.BASE_URL}JJJ.png`} 
             alt="Logo" 
             className="h-8 w-auto brightness-200 transition-transform duration-300 group-hover:scale-110" 
           />
@@ -125,23 +117,9 @@ const Hero = () => (
 // --- Works Section ---
 const Works = () => {
   const projects = [
-    { 
-      title: "Task Manager Team", 
-      category: "Team Collaboration", 
-      img: "p1.png",
-      link: "https://taskmanagerteam.azurewebsites.net/" 
-    },
-    { 
-      title: "Daily Verse", 
-      category: "Android App", 
-      img: "p2.jpeg",
-      link: "https://github.com/j-j-j-github/DAILYVERSE" // Added your github link here
-    },
-    { 
-      title: "Renewly", 
-      category: "Android App", 
-      isComingSoon: true 
-    }
+    { title: "Task Manager Team", category: "Team Collaboration", img: "p1.png", link: "https://taskmanagerteam.azurewebsites.net/" },
+    { title: "Daily Verse", category: "Android App", img: "p2.jpeg", link: "https://github.com/j-j-j-github/DAILYVERSE" },
+    { title: "Renewly", category: "Android App", isComingSoon: true }
   ];
 
   return (
@@ -163,7 +141,8 @@ const Works = () => {
                     <div className="text-2xl font-light tracking-widest text-white/20 uppercase">Coming Soon</div>
                   </div>
                 ) : (
-                  <img src={p.img} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  /* FIX: Use BASE_URL */
+                  <img src={`${import.meta.env.BASE_URL}${p.img}`} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 )}
               </div>
               <div className="p-10 flex flex-col justify-between h-1/3">
@@ -191,25 +170,17 @@ const Founder = () => (
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl bg-gray-100"
         >
-          <img src="Founder.jpg" alt="Founder" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          {/* FIX: Use BASE_URL */}
+          <img src={`${import.meta.env.BASE_URL}Founder.jpg`} alt="Founder" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
         </motion.div>
         
         <div className="space-y-8">
           <div>
-            {/* CLEAN TYPOGRAPHY: No line, just the text */}
-            <div className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-2">
-              Founder & Lead Developer
-            </div>
+            <div className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-2">Founder & Lead Developer</div>
             <h2 className="text-4xl font-bold tracking-tight text-black leading-tight">Jeeval Jolly Jacob</h2>
           </div>
-          
           <p className="text-xl text-gray-600 leading-relaxed">As the founder of J3 Labs, I bridge the gap between complex engineering and human-centered design.</p>
-          
-          <motion.a 
-            href="https://j-j-j-github.github.io/MY-PORTFOLIO/" 
-            target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center group"
-          >
+          <motion.a href="https://j-j-j-github.github.io/MY-PORTFOLIO/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center group">
             <div className="bg-black text-white px-8 py-5 rounded-full flex items-center gap-5 shadow-2xl group-hover:bg-blue-600 transition-all">
               <span className="font-bold uppercase tracking-widest text-sm">Explore Portfolio</span>
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-45 transition-transform"><ArrowUpRight size={18} /></div>
@@ -221,7 +192,6 @@ const Founder = () => (
   </section>
 );
 
-// --- App Root ---
 export default function App() {
   return (
     <main className="antialiased selection:bg-blue-600 selection:text-white pt-16">
@@ -231,7 +201,8 @@ export default function App() {
       <Founder />
       <footer className="py-12 text-center bg-black border-t border-white/5">
         <div className="max-w-xs mx-auto">
-          <img src="JJJ.png" alt="Logo" className="h-8 w-auto mx-auto mb-6 brightness-200 opacity-60" />
+          {/* FIX: Use BASE_URL */}
+          <img src={`${import.meta.env.BASE_URL}JJJ.png`} alt="Logo" className="h-8 w-auto mx-auto mb-6 brightness-200 opacity-60" />
           <a href="https://www.linkedin.com/company/j3labs" target="_blank" className="text-gray-500 hover:text-white transition-colors text-xs tracking-widest uppercase border border-white/10 px-6 py-2 rounded-full inline-block mb-8">LinkedIn</a>
           <p className="text-gray-600 text-[9px] tracking-[0.4em] uppercase font-bold">© 2026 J3 Labs</p>
         </div>
