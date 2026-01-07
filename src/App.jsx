@@ -67,7 +67,7 @@ const Navbar = () => {
           className="flex items-center gap-3 cursor-pointer group"
         >
           <img 
-            src="/JJJ.png" 
+            src="JJJ.png" 
             alt="Logo" 
             className="h-8 w-auto brightness-200 transition-transform duration-300 group-hover:scale-110" 
           />
@@ -128,13 +128,13 @@ const Works = () => {
     { 
       title: "Task Manager Team", 
       category: "Team Collaboration", 
-      img: "/p1.png",
+      img: "p1.png",
       link: "https://taskmanagerteam.azurewebsites.net/" 
     },
     { 
       title: "Daily Verse", 
       category: "Android App", 
-      img: "/p2.jpeg",
+      img: "p2.jpeg",
       link: "https://github.com/j-j-j-github/DAILYVERSE" // Added your github link here
     },
     { 
@@ -191,7 +191,7 @@ const Founder = () => (
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl bg-gray-100"
         >
-          <img src="/Founder.jpg" alt="Founder" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <img src="Founder.jpg" alt="Founder" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
         </motion.div>
         
         <div className="space-y-8">
@@ -231,7 +231,7 @@ export default function App() {
       <Founder />
       <footer className="py-12 text-center bg-black border-t border-white/5">
         <div className="max-w-xs mx-auto">
-          <img src="/JJJ.png" alt="Logo" className="h-8 w-auto mx-auto mb-6 brightness-200 opacity-60" />
+          <img src="JJJ.png" alt="Logo" className="h-8 w-auto mx-auto mb-6 brightness-200 opacity-60" />
           <a href="https://www.linkedin.com/company/j3labs" target="_blank" className="text-gray-500 hover:text-white transition-colors text-xs tracking-widest uppercase border border-white/10 px-6 py-2 rounded-full inline-block mb-8">LinkedIn</a>
           <p className="text-gray-600 text-[9px] tracking-[0.4em] uppercase font-bold">© 2026 J3 Labs</p>
         </div>
