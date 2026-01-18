@@ -172,7 +172,7 @@ const Works = () => {
   const projects = [
     { 
       title: "ECHO", 
-      category: "Social Experiment", 
+      category: "Social Experience", 
       description: "An anonymous social space where thoughts drift freely and strangers connect through questions, curiosity, and shared presence. Zero identity, just pure expression.",
       tags: ["React", "Supabase", "Canvas API"],
       img: "p3.png", 
