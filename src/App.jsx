@@ -109,18 +109,16 @@ const Hero = () => (
         Innovation Studio
       </span>
       <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 text-black leading-tight">
-        J3 Labs. <br /> 
+        J3 Labs <br /> 
         <span className="text-white drop-shadow-[0_4px_15px_rgba(0,0,0,0.4)]">
-          Built for the future.
+        Experiments in Code.
         </span>
       </h1>
       <div className="space-y-2 text-lg text-black leading-relaxed font-light">
         <p>
-            Welcome to the innovation lab of <span className="font-medium">Jeeval Jolly Jacob</span>, where ideas become real software solutions.
+        Where ideas evolve into real software, turning curiosity and creativity into practical, human-centered solutions.
         </p>
-        <p>
-            We experiment, build, and iterate on projects turning curiosity into impact for the world.
-        </p>
+        <p>A playground for curiosity, code and innovation.</p>
       </div>
     </motion.div>
   </section>
@@ -152,7 +150,7 @@ const AboutCompany = () => (
           </div>
           <div className="text-lg text-gray-600 leading-relaxed space-y-6 font-light">
              <p>
-                J3 Labs is not just a software house; it is an experimental playground where technology meets purpose. Founded with the vision of simplifying complexity, we specialize in crafting digital experiences that are intuitive, robust, and practical.
+             J3 Labs is an experimental playground where technology meets purpose, not just a software house, but a place to explore what thoughtful software can become. Founded with the vision of simplifying complexity, we specialize in crafting digital experiences that are intuitive, robust, and practical.
              </p>
              <p>
                 From rapid prototyping to full-scale application development, our mission is to explore the boundaries of what is possible with code. We believe that the best software doesn't just function, it feels inevitable.
@@ -204,16 +202,28 @@ const Works = () => {
   ];
 
   return (
-    <section id="works" className="py-32 bg-black px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-20 text-white text-center">Selected Works</h2>
+    <section id="works" className="relative py-32 bg-black px-6 overflow-hidden">
+      
+      {/* --- BACKGROUND IMAGE WITH FADE --- */}
+      <div className="absolute top-0 left-0 w-full h-[800px] z-0 pointer-events-none">
+        <img 
+          src={`${import.meta.env.BASE_URL}lab.jpg`} 
+          alt="Lab Background" 
+          className="w-full h-full object-cover opacity-60" 
+        />
+        {/* Gradient Overlay: Transparent at top -> Black at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/60 to-black" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-20 text-white text-center drop-shadow-2xl">Made in the Lab</h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {projects.map((p, i) => (
             <motion.div 
               key={i} 
               whileHover={{ y: -5 }} 
-              className="group bg-neutral-900/50 border border-white/10 rounded-[2rem] overflow-hidden hover:border-white/20 transition-all duration-300 flex flex-col"
+              className="group bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-[2rem] overflow-hidden hover:border-white/20 transition-all duration-300 flex flex-col"
               onClick={() => p.link && window.open(p.link, '_blank')}
             >
               {/* Image Container - Aspect Video (16:9) fixes desktop cropping */}
@@ -287,7 +297,7 @@ const Founder = () => (
             <div className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-2">Founder & Lead Developer</div>
             <h2 className="text-4xl font-bold tracking-tight text-black leading-tight">Jeeval Jolly Jacob</h2>
           </div>
-          <p className="text-xl text-gray-600 leading-relaxed">As the founder of J3 Labs, I bridge the gap between complex engineering and human-centered design.</p>
+          <p className="text-xl text-gray-600 leading-relaxed">As the founder of J3 Labs, I bridge the gap between complex engineering and human-centered design, building products that feel simple on the surface and solid underneath.</p>
           <motion.a href="https://j-j-j-github.github.io/MY-PORTFOLIO/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center group">
             <div className="bg-black text-white px-8 py-5 rounded-full flex items-center gap-5 shadow-2xl group-hover:bg-blue-600 transition-all">
               <span className="font-bold uppercase tracking-widest text-sm">Explore Portfolio</span>
