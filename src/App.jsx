@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Cpu, Layout, Code, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Cpu, Layout, Code, ExternalLink, Mail, Sparkles, Linkedin } from 'lucide-react';
 
 // --- Vanta Background Component ---
 const TopologyBackground = () => {
@@ -72,7 +72,7 @@ const Navbar = () => {
              Home
              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
           </a>
-          {['About', 'Works', 'Founder'].map((item) => (
+          {['About', 'Works', 'Founder', 'Connect'].map((item) => (
             <a 
                 key={item} 
                 href={item === 'About' ? '#about-company' : `#${item.toLowerCase()}`} 
@@ -165,7 +165,7 @@ const AboutCompany = () => (
   </section>
 );
 
-// --- Works Section (UPDATED) ---
+// --- Works Section ---
 const Works = () => {
   const projects = [
     { 
@@ -174,7 +174,7 @@ const Works = () => {
       description: "An anonymous social space where thoughts drift freely and strangers connect through questions, curiosity, and shared presence. Zero identity, just pure expression.",
       tags: ["React", "Supabase", "Canvas API"],
       img: "p3.png", 
-      link: "https://void-echo.vercel.app/" 
+      link: "https://www.voidecho.space/" 
     },
     { 
       title: "Task Manager Team", 
@@ -211,7 +211,6 @@ const Works = () => {
           alt="Lab Background" 
           className="w-full h-full object-cover opacity-60" 
         />
-        {/* Gradient Overlay: Transparent at top -> Black at bottom */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/60 to-black" />
       </div>
 
@@ -226,7 +225,6 @@ const Works = () => {
               className="group bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-[2rem] overflow-hidden hover:border-white/20 transition-all duration-300 flex flex-col"
               onClick={() => p.link && window.open(p.link, '_blank')}
             >
-              {/* Image Container - Aspect Video (16:9) fixes desktop cropping */}
               <div className="aspect-video w-full bg-[#050505] relative overflow-hidden border-b border-white/5 group-hover:opacity-90 transition-opacity">
                 {p.isComingSoon ? (
                   <div className="w-full h-full flex flex-col items-center justify-center bg-neutral-950">
@@ -241,7 +239,6 @@ const Works = () => {
                   />
                 )}
                 
-                {/* Overlay Button */}
                 {!p.isComingSoon && (
                   <div className="absolute top-4 right-4 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <ArrowUpRight className="text-white w-5 h-5" />
@@ -249,7 +246,6 @@ const Works = () => {
                 )}
               </div>
 
-              {/* Content Container */}
               <div className="p-8 flex flex-col flex-grow">
                 <div className="flex justify-between items-start mb-4">
                   <div>
@@ -262,7 +258,6 @@ const Works = () => {
                   {p.description}
                 </p>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {p.tags?.map((tag, idx) => (
                     <span key={idx} className="px-3 py-1 bg-white/5 border border-white/5 rounded-full text-[10px] font-medium text-gray-300 uppercase tracking-wide">
@@ -298,10 +293,18 @@ const Founder = () => (
             <h2 className="text-4xl font-bold tracking-tight text-black leading-tight">Jeeval Jolly Jacob</h2>
           </div>
           <p className="text-xl text-gray-600 leading-relaxed">As the founder of J3 Labs, I bridge the gap between complex engineering and human-centered design, building products that feel simple on the surface and solid underneath.</p>
-          <motion.a href="https://j-j-j-github.github.io/MY-PORTFOLIO/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center group">
-            <div className="bg-black text-white px-8 py-5 rounded-full flex items-center gap-5 shadow-2xl group-hover:bg-blue-600 transition-all">
-              <span className="font-bold uppercase tracking-widest text-sm">Explore Portfolio</span>
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-45 transition-transform"><ArrowUpRight size={18} /></div>
+          
+          <motion.a 
+            href="https://www.linkedin.com/in/jeeval-jolly-jacob-5a28b4329/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center group"
+          >
+            <div className="bg-black text-white px-8 py-5 rounded-full flex items-center gap-5 shadow-2xl group-hover:bg-[#0077b5] transition-all">
+              <span className="font-bold uppercase tracking-widest text-sm">Connect on LinkedIn</span>
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Linkedin size={18} fill="currentColor" className="stroke-none" />
+              </div>
             </div>
           </motion.a>
         </div>
@@ -309,6 +312,81 @@ const Founder = () => (
     </div>
   </section>
 );
+
+// --- Connect / Contact Section ---
+const Connect = () => {
+  const handleEmail = () => {
+    const gmailUrl =
+      "https://mail.google.com/mail/?view=cm&fs=1&to=thej3labs@gmail.com&su=Project%20Inquiry%20-%20J3%20Labs";
+    window.open(gmailUrl, "_blank");
+  };
+
+  return (
+    <section id="connect" className="py-32 px-6 bg-black">
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="space-y-8"
+        >
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-blue-500 block">
+            Get in Touch
+          </span>
+
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
+            Want to connect with us?
+          </h2>
+
+          <p className="text-gray-400 text-lg font-light max-w-2xl mx-auto leading-relaxed">
+            Facing a problem with our current apps? Or perhaps you want to build
+            something entirely new? We specialize in turning frustrations into
+            features and ideas into reality. Let's build what's next.
+          </p>
+
+          <div className="pt-12 flex flex-col md:flex-row justify-center gap-6">
+            {/* Email Button */}
+            <motion.button
+              onClick={handleEmail}
+              className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 rounded-full border border-white/20 bg-transparent overflow-hidden cursor-pointer w-full md:w-auto"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="absolute inset-0 bg-red-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+              <div className="relative z-10 flex items-center gap-4 text-white transition-colors duration-300">
+                <Mail size={22} />
+                <span className="text-xl md:text-2xl font-bold tracking-tight">
+                  Email
+                </span>
+              </div>
+            </motion.button>
+
+            {/* LinkedIn Button */}
+            <motion.a
+              href="https://www.linkedin.com/company/j3labs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 rounded-full border border-white/20 bg-transparent overflow-hidden w-full md:w-auto"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+              <div className="relative z-10 flex items-center gap-4 text-white transition-colors duration-300">
+                <Linkedin size={22} fill="currentColor" className="stroke-none" />
+                <span className="text-xl md:text-2xl font-bold tracking-tight">
+                  LinkedIn
+                </span>
+              </div>
+            </motion.a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default function App() {
   return (
@@ -318,10 +396,14 @@ export default function App() {
       <AboutCompany />
       <Works />
       <Founder />
-      <footer className="py-12 text-center bg-black border-t border-white/5">
+      <Connect />
+      <footer className="py-12 text-center bg-black border-t border-white/20">
         <div className="max-w-xs mx-auto">
           <img src={`${import.meta.env.BASE_URL}JJJ.png`} alt="Logo" className="h-8 w-auto mx-auto mb-6 brightness-200 opacity-60" />
-          <a href="https://www.linkedin.com/company/j3labs" target="_blank" className="text-gray-500 hover:text-white transition-colors text-xs tracking-widest uppercase border border-white/10 px-6 py-2 rounded-full inline-block mb-8">LinkedIn</a>
+          {/* Quote replaces the LinkedIn Button */}
+          <p className="text-gray-500 text-[10px] tracking-[0.3em] uppercase mb-8 font-light border-b border-white/10 pb-8 mx-10">
+            "Designing the Inevitable"
+          </p>
           <p className="text-gray-600 text-[9px] tracking-[0.4em] uppercase font-bold">© 2026 J3 Labs</p>
         </div>
       </footer>
