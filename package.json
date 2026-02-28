@@ -2,6 +2,7 @@
   "name": "j3-labs",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://thej3labs.com/",
   "type": "module",
   "scripts": {
     "dev": "vite",
