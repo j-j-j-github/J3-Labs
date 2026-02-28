@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Cpu, Layout, Code, ExternalLink, Mail, Sparkles, Linkedin } from 'lucide-react';
-
+import { ArrowUpRight, ShoppingBag, Layout, Code, ExternalLink, Mail, Sparkles, Linkedin } from 'lucide-react';
 // --- Vanta Background Component ---
 const TopologyBackground = () => {
   const vantaRef = useRef(null);
@@ -172,9 +171,10 @@ const Works = () => {
       title: "ECHO", 
       category: "Social Experience", 
       description: "An anonymous social space where thoughts drift freely and strangers connect through questions, curiosity, and shared presence. Zero identity, just pure expression.",
-      tags: ["React", "Supabase", "Canvas API"],
       img: "p3.png", 
-      link: "https://www.voidecho.space/" 
+      link: "https://www.voidecho.space/",
+      playStore: "https://play.google.com/store/apps/details?id=com.j3labs.echo",
+      tags: ["React", "Supabase", "Canvas API"]
     },
     { 
       title: "Task Manager Team", 
@@ -186,11 +186,11 @@ const Works = () => {
     },
     { 
       title: "Daily Verse", 
-      category: "Mobile Application", 
-      description: "A calm, distraction-free daily devotion app designed to bring clarity, reflection, and peace to your routine, even when you're offline.",
-      tags: ["Kotlin", "Android SDK", "Material Design 3"],
-      img: "p2.jpeg", 
-      link: "https://github.com/j-j-j-github/DAILYVERSE" 
+      category: "Android App", 
+      description: "A minimalist daily devotion app built to deliver scripture seamlessly. Features a synchronized widget, offline support, and an OLED-optimized dark mode.",
+      img: "p2.jpeg",
+      playStore: "https://play.google.com/store/apps/details?id=com.j3labs.dailyverse",
+      tags: ["Kotlin", "WorkManager", "Material Design 3"] 
     },
     { 
       title: "Renewly", 
@@ -223,9 +223,8 @@ const Works = () => {
               key={i} 
               whileHover={{ y: -5 }} 
               className="group bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-[2rem] overflow-hidden hover:border-white/20 transition-all duration-300 flex flex-col"
-              onClick={() => p.link && window.open(p.link, '_blank')}
             >
-              <div className="aspect-video w-full bg-[#050505] relative overflow-hidden border-b border-white/5 group-hover:opacity-90 transition-opacity">
+              <div className="aspect-video w-full bg-[#050505] relative overflow-hidden border-b border-white/5">
                 {p.isComingSoon ? (
                   <div className="w-full h-full flex flex-col items-center justify-center bg-neutral-950">
                     <motion.div animate={{ opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 3, repeat: Infinity }} className="text-[10px] tracking-[0.4em] uppercase text-blue-500 font-bold mb-3">In Development</motion.div>
@@ -238,19 +237,13 @@ const Works = () => {
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" 
                   />
                 )}
-                
-                {!p.isComingSoon && (
-                  <div className="absolute top-4 right-4 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ArrowUpRight className="text-white w-5 h-5" />
-                  </div>
-                )}
               </div>
 
               <div className="p-8 flex flex-col flex-grow">
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <span className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-1 block">{p.category}</span>
-                    <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">{p.title}</h3>
+                    <h3 className="text-2xl font-bold text-white transition-colors">{p.title}</h3>
                   </div>
                 </div>
                 
@@ -258,13 +251,35 @@ const Works = () => {
                   {p.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mt-auto">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {p.tags?.map((tag, idx) => (
                     <span key={idx} className="px-3 py-1 bg-white/5 border border-white/5 rounded-full text-[10px] font-medium text-gray-300 uppercase tracking-wide">
                       {tag}
                     </span>
                   ))}
                 </div>
+
+                {/* ACTION BUTTONS */}
+                {!p.isComingSoon && (
+                  <div className="flex flex-wrap gap-3 mt-auto pt-4 border-t border-white/10">
+                    {p.link && (
+                      <button 
+                        onClick={() => window.open(p.link, '_blank')}
+                        className="flex items-center gap-2 text-xs font-bold text-white bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 rounded-full transition-all"
+                      >
+                        Visit Site <ArrowUpRight size={14} />
+                      </button>
+                    )}
+                    {p.playStore && (
+                      <button 
+                        onClick={() => window.open(p.playStore, '_blank')}
+                        className="flex items-center gap-2 text-xs font-bold text-black bg-white hover:bg-gray-200 px-4 py-2 rounded-full transition-all"
+                      >
+                        Play Store <ShoppingBag size={14} />
+                      </button>
+                    )}
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
